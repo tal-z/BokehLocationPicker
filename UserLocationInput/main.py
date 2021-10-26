@@ -8,7 +8,7 @@ from pyproj import transform
 import psycopg2
 
 # Database connection
-conn = psycopg2.connect(dbname="worldborders", user="postgres", password=123456789)
+conn = psycopg2.connect(dbname="postgresql-objective-79519", user="postgres", password=123456789)
 cur = conn.cursor()
 
 def get_user_ip():
