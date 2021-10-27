@@ -11,11 +11,7 @@
         </style>
         <meta charset="utf-8">
         {{ bokeh_css }}
-        {{ bokeh_js }}
-
-        <link rel="stylesheet" href="https://cdn.bokeh.org/bokeh/release/bokeh-2.4.1.min.css" type="text/css" />
         <script type="text/javascript" src="https://cdn.bokeh.org/bokeh/release/bokeh-2.4.1.min.js"></script>
-        {{ script | safe }}
     </head>
     <body>
         {{ plot_div|indent(8) }}
