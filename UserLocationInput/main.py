@@ -17,7 +17,7 @@ cur = conn.cursor()
 
 def get_user_ip():
     try:
-        ip = {}
+        ip = {'ip': None}
         callback = CustomJS(args=dict(ip=ip), code="""
     
         // JavaScript code goes here
