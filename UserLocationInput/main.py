@@ -21,7 +21,7 @@ def get_user_ip():
         callback = CustomJS(args=dict(ip=ip), code="""
     
         // JavaScript code goes here
-        ver results
+        var results
         fetch('https://api.ipify.org/?format=json')
             .then(results => results.json())
     
