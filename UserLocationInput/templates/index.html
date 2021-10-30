@@ -15,11 +15,11 @@
 
         {{ script | safe }}
         <meta charset="utf-8">
-        {{ bokeh_css }}
-        {{ bokeh_js }}
+        {{ bokeh_css|safe }}
+        {{ bokeh_js|safe }}
     </head>
     <body>
-        {{ plot_div|indent(8)|safe }}
-        {{ plot_script|indent(8)|safe }}
+        {{ plot_div|safe }}
+        {{ plot_script|safe }}
     </body>
 </html>
