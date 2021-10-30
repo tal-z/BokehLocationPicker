@@ -21,13 +21,15 @@ def get_user_ip():
         callback = CustomJS(args=dict(ip=ip), code="""
     
         // JavaScript code goes here
+        ver results
         fetch('https://api.ipify.org/?format=json')
             .then(results => results.json())
     
-        ip = results;
+        ip.ip = results;
     
         """)
         print(ip)
+        print(callback)
         return ip
     except:
         print('ip exception')
