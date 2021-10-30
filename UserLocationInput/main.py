@@ -16,7 +16,22 @@ cur = conn.cursor()
 
 
 def get_user_ip():
-    raise Exception
+    try:
+        ip = {}
+        callback = CustomJS(args=dict(ip=ip), code="""
+    
+        // JavaScript code goes here
+        fetch('https://api.ipify.org/?format=json')
+            .then(results => results.json())
+    
+        ip = results;
+    
+        """)
+        print(ip)
+        return ip
+    except:
+        print('ip exception')
+        raise Exception
 
 try:
     user_ip = get_user_ip()
