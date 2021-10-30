@@ -8,7 +8,7 @@ from pyproj import transform
 import psycopg2
 
 # Database connection
-conn = psycopg2.connect(dbname="postgresql-objective-79519", user="postgres", password=123456789)
+conn = psycopg2.connect(dbname="worldborders", user="postgres", password=123456789)
 cur = conn.cursor()
 
 def get_user_ip():
@@ -16,7 +16,8 @@ def get_user_ip():
 
 try:
     user_ip = get_user_ip()
-    with geoip2.database.Reader(r'geoip/GeoLite2-City.mmdb') as reader:
+    with geoip2.database.Reader(
+            r'C:\Users\PC\PycharmProjects\LearnGeoDjango\geodjango\geodjango\geoip\GeoLite2-City.mmdb') as reader:
         response = reader.city(user_ip)
         user_coords = transform(4326, 3857, response.location.latitude, response.location.longitude)
     label_text = 'You are here'
