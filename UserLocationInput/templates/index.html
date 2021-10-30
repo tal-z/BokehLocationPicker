@@ -34,7 +34,7 @@
         {% endfor %}
         {% endfor %}
     {% endblock %}
-    {{ plot_script | indent(8) }}
+    {{ plot_script | safe | indent(8) }}
     {% endblock %}
 </body>
 {% endblock %}
