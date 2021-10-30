@@ -1,7 +1,7 @@
 from bokeh.plotting import figure
 from bokeh.models import ColumnDataSource, Column, Row, Label, WheelZoomTool, Button, CustomJS, TextInput, Paragraph
 from bokeh.io import curdoc
-from bokeh.events import DoubleTap
+from bokeh.events import DoubleTap, DocumentReady
 from bokeh.tile_providers import OSM, get_provider
 import geoip2.database
 from pyproj import transform
@@ -14,6 +14,23 @@ DATABASE_URL = os.environ['DATABASE_URL']
 conn = psycopg2.connect(DATABASE_URL, sslmode='require')
 cur = conn.cursor()
 
+
+
+#Create Plot
+
+#Initialize user coords
+user_coords = transform(4326, 3857, 42.36034, -71.0578633)
+label_text = 'Boston City Hall'
+
+#Initialize tools
+TOOLS = "tap,pan,reset"
+p = figure(title='Double-click to select a location.',
+           tools=TOOLS, width=700, height=500,
+           x_range=(user_coords[0] - 10000, user_coords[0] + 10000),
+           y_range=(user_coords[1] - 10000, user_coords[1] + 10000),
+           background_fill_color='powderblue',
+           border_fill_color='powderblue',
+           )
 
 def get_user_ip():
     try:
@@ -32,6 +49,7 @@ def get_user_ip():
         """)
         print(ip)
         print(callback.args)
+        p.js_on_event(DocumentReady, callback)
         return ip
     except:
         print('ip exception')
@@ -50,14 +68,7 @@ except:
     user_coords = transform(4326, 3857, 42.36034, -71.0578633)
     label_text = 'Boston City Hall'
 
-TOOLS = "tap,pan,reset"
-p = figure(title='Double-click to select a location.',
-           tools=TOOLS, width=700, height=500,
-           x_range=(user_coords[0] - 10000, user_coords[0] + 10000),
-           y_range=(user_coords[1] - 10000, user_coords[1] + 10000),
-           background_fill_color='powderblue',
-           border_fill_color='powderblue',
-           )
+
 p.toolbar.logo = None
 p.toolbar_location = None
 p.x_range.min_interval = 100
