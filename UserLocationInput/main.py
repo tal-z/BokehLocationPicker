@@ -17,7 +17,7 @@ def get_user_ip():
 try:
     user_ip = get_user_ip()
     with geoip2.database.Reader(
-            r'C:\Users\PC\PycharmProjects\LearnGeoDjango\geodjango\geodjango\geoip\GeoLite2-City.mmdb') as reader:
+            r'geoip\GeoLite2-City.mmdb') as reader:
         response = reader.city(user_ip)
         user_coords = transform(4326, 3857, response.location.latitude, response.location.longitude)
     label_text = 'You are here'

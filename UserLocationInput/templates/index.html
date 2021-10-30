@@ -1,25 +1,41 @@
+{% extends base %}
+
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <style>
-            body {
-                background-color: powderblue;
-            }
-            * {
-                font-family: Yu Gothic UI;
-            }
-        </style>
+{% block head %}
+<head>
+    {% block inner_head %}
+    <meta charset="utf-8">
+    <title>{% block title %}{{ title | e if title else "Bokeh Plot" }}{% endblock %}</title>
+    {% block preamble %}{% endblock %}
+    {% block resources %}
+        {% block css_resources %}
+        {{ bokeh_css | indent(8) if bokeh_css }}
+        {% endblock %}
+        {% block js_resources %}
+        {{ bokeh_js | indent(8) if bokeh_js }}
+        {% endblock %}
+    {% endblock %}
+    {% block postamble %}{% endblock %}
+    {% endblock %}
         <script type="text/javascript" src="https://cdn.bokeh.org/bokeh/release/bokeh-2.4.1.min.js"></script>
         <script type="text/javascript" src="https://cdn.bokeh.org/bokeh/release/bokeh-widgets-2.4.1.min.js"></script>
         <script type="text/javascript" src="https://cdn.bokeh.org/bokeh/release/bokeh-tables-2.4.1.min.js"></script>
-
-        {{ script | safe }}
-        <meta charset="utf-8">
-        {{ bokeh_css|safe }}
-        {{ bokeh_js|safe }}
-    </head>
-    <body>
-        {{ plot_div|safe }}
-        {{ plot_script|safe }}
-    </body>
+</head>
+{% endblock %}
+{% block body %}
+<body>
+    {% block inner_body %}
+    {% block contents %}
+        {% for doc in docs %}
+        {{ embed(doc) if doc.elementid }}
+        {% for root in doc.roots %}
+            {{ embed(root) | indent(10) }}
+        {% endfor %}
+        {% endfor %}
+    {% endblock %}
+    {{ plot_script | indent(8) }}
+    {% endblock %}
+</body>
+{% endblock %}
 </html>
