@@ -8,11 +8,12 @@ from pyproj import transform
 import psycopg2
 import os
 
-# Database connection
+# Database connection configured for Heroku
 DATABASE_URL = os.environ['DATABASE_URL']
 
 conn = psycopg2.connect(DATABASE_URL, sslmode='require')
 cur = conn.cursor()
+
 
 def get_user_ip():
     raise Exception
@@ -45,6 +46,8 @@ p.x_range.max_interval = 100000
 p.add_tools(WheelZoomTool(zoom_on_axis=False))
 p.toolbar.active_scroll = p.select_one(WheelZoomTool)
 p.axis.visible = False
+p.xgrid.visible = False
+p.ygrid.visible = False
 p.circle(x=user_coords[0], y=user_coords[1], line_color="black", fill_color="red", size=10)
 cur.execute("""
     SELECT x, y FROM bins_binlocation;
