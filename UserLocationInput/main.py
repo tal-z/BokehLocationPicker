@@ -6,9 +6,14 @@ from bokeh.tile_providers import OSM, get_provider
 import geoip2.database
 from pyproj import transform
 import psycopg2
+import os
 
 # Database connection
-conn = psycopg2.connect(dbname="worldborders", user="postgres", password=123456789)
+
+DATABASE_URL = os.environ['DATABASE_URL']
+
+
+conn = psycopg2.connect(DATABASE_URL, sslmode='require')
 cur = conn.cursor()
 
 def get_user_ip():
