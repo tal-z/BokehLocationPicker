@@ -19,7 +19,7 @@
         {{ bokeh_js }}
     </head>
     <body>
-        {{ plot_div|indent(8) }}
-        {{ plot_script|indent(8) }}
+        {{ plot_div|indent(8)|safe }}
+        {{ plot_script|indent(8)|safe }}
     </body>
 </html>
