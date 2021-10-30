@@ -26,10 +26,11 @@ def get_user_ip():
             .then(results => results.json())
     
         ip.ip = results;
+        console.log(results)
     
         """)
         print(ip)
-        print(callback)
+        print(callback.args)
         return ip
     except:
         print('ip exception')
