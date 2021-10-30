@@ -21,12 +21,13 @@ def get_user_ip():
         callback = CustomJS(args=dict(ip=ip), code="""
     
         // JavaScript code goes here
-        var results
+        var obj;
         fetch('https://api.ipify.org/?format=json')
             .then(results => results.json())
-    
-        ip.ip = results;
-        console.log(results)
+            .then(data => obj = data)
+            .then(console.log)
+        
+        ip.ip = obj;
     
         """)
         print(ip)
