@@ -10,10 +10,10 @@
     {% block preamble %}{% endblock %}
     {% block resources %}
         {% block css_resources %}
-        {{ bokeh_css | indent(8) if bokeh_css }}
+        {{ bokeh_css | safe | indent(8) if bokeh_css }}
         {% endblock %}
         {% block js_resources %}
-        {{ bokeh_js | indent(8) if bokeh_js }}
+        {{ bokeh_js | safe | indent(8) if bokeh_js }}
         {% endblock %}
     {% endblock %}
     {% block postamble %}{% endblock %}
@@ -28,9 +28,9 @@
     {% block inner_body %}
     {% block contents %}
         {% for doc in docs %}
-        {{ embed(doc) if doc.elementid }}
+        {{ embed(doc) | safe if doc.elementid }}
         {% for root in doc.roots %}
-            {{ embed(root) | indent(10) }}
+            {{ embed(root) | safe | indent(10) }}
         {% endfor %}
         {% endfor %}
     {% endblock %}
