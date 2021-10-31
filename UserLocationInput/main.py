@@ -1,7 +1,7 @@
 from bokeh.plotting import figure
 from bokeh.models import ColumnDataSource, Column, Row, Label, WheelZoomTool, Button, CustomJS, TextInput, Paragraph
 from bokeh.io import curdoc
-from bokeh.events import DoubleTap, DocumentReady
+from bokeh.events import DoubleTap, DocumentReady, MouseEnter
 from bokeh.tile_providers import OSM, get_provider
 import geoip2.database
 from pyproj import transform
@@ -31,6 +31,12 @@ p = figure(title='Double-click to select a location.',
            background_fill_color='powderblue',
            border_fill_color='powderblue',
            )
+
+p.on_event(MouseEnter, CustomJS(code="""
+    $("#container").css('outline',0).attr('tabindex',-1).focus(function () {
+        ....
+    });
+"""))
 
 def get_user_ip():
     try:
