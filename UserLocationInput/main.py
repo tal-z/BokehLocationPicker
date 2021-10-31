@@ -32,12 +32,6 @@ p = figure(title='Double-click to select a location.',
            border_fill_color='powderblue',
            )
 
-p.js_on_event(MouseEnter, CustomJS(code="""
-    document.getElementById("container").style.border-color='black'
-    document.getElementById("container").style.border-style='solid'
-
-"""))
-
 def get_user_ip():
     try:
         ip = {'ip': None}
