@@ -33,8 +33,8 @@ p = figure(title='Double-click to select a location.',
            )
 
 p.js_on_event(MouseEnter, CustomJS(code="""
-    document.getElementByClass("bk bk-canvas-events").style.border-color='black'
-    document.getElementByClass("bk bk-canvas-events").style.border-style='solid'
+    document.getElementById("container").style.border-color='black'
+    document.getElementById("container").style.border-style='solid'
 
 """))
 
