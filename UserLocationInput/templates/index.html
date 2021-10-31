@@ -5,8 +5,15 @@
             body {
                 background-color: powderblue;
             }
+
             * {
                 font-family: Yu Gothic UI;
+            }
+
+            input[type='text'],
+            input[type='number'],
+            input {
+              font-size: 10px;
             }
         </style>
         <script type="text/javascript" src="https://cdn.bokeh.org/bokeh/release/bokeh-2.4.1.min.js"></script>
@@ -16,7 +23,6 @@
 
         {{ script | safe }}
         <meta charset="utf-8">
-        <meta name="viewport" content="user-scalable=no">
 
         {{ bokeh_css }}
         {{ bokeh_js }}
