@@ -32,7 +32,7 @@ p = figure(title='Double-click to select a location.',
            border_fill_color='powderblue',
            )
 
-p.on_event(MouseEnter, CustomJS(code="""
+p.js_on_event(MouseEnter, CustomJS(code="""
     $("#container").css('outline',0).attr('tabindex',-1).focus(function () {
         ....
     });
