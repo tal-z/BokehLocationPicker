@@ -1,3 +1,6 @@
+{% extends base %}
+
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -25,8 +28,8 @@
     </head>
     <body>
         <div id="container" tabindex="0">
-            {{ plot_div|indent(8) }}
-            {{ plot_script|indent(8) }}
+            {{ embed(roots.p) }}
+
         </div>
     </body>
 <script>
