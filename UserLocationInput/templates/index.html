@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+        <meta charset="utf-8">
         <style>
             body {
                 background-color: powderblue;
@@ -10,19 +11,24 @@
                 font-family: Yu Gothic UI;
             }
 
-            @media handheld, only screen and (max-width: 400px) {
+            container {
+                margin: 10px 0px;
+                background-color: steelblue;
+                height: 200px;
                 width: 100%;
+                max-width: 30%;
+                margin: 0 auto;
+                margin-bottom: .5em;
             }
+
 
         </style>
         <script type="text/javascript" src="https://cdn.bokeh.org/bokeh/release/bokeh-2.4.1.min.js"></script>
         <script type="text/javascript" src="https://cdn.bokeh.org/bokeh/release/bokeh-widgets-2.4.1.min.js"></script>
         <script type="text/javascript" src="https://cdn.bokeh.org/bokeh/release/bokeh-tables-2.4.1.min.js"></script>
 
-
         {{ script | safe }}
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 
         {{ bokeh_css }}
         {{ bokeh_js }}
