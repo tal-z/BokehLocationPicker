@@ -32,7 +32,11 @@
 <script>
     if ((navigator.platform.indexOf('iPhone') != -1) ||
         (navigator.platform.indexOf('iPad') != -1) ||
-        (navigator.platform.indexOf('iPod') != -1))
+        (navigator.platform.indexOf('iPod') != -1) ||
+        (navigator.platform.indexOf('webOS') != -1) ||
+        (navigator.platform.indexOf('Android') != -1) ||
+        (navigator.platform.indexOf('BlackBerry') != -1) ||
+        (navigator.platform.indexOf('Windows Phone') != -1))
 {
     // this is needed since iOS 12 to prevent iOS browsers to capture gestures
     document.getElementById('container').addEventListener('gesturestart', function(event) {event.preventDefault();}, false);
