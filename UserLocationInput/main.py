@@ -33,9 +33,7 @@ p = figure(title='Double-click to select a location.',
            )
 
 p.js_on_event(MouseEnter, CustomJS(code="""
-    $("#container").css('outline',0).attr('tabindex',-1).focus(function () {
-        ....
-    });
+    document.getElementById("container").style.outline='black'
 """))
 
 def get_user_ip():
