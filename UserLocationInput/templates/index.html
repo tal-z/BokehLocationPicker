@@ -51,7 +51,7 @@ var obj;
 fetch('https://api.ipify.org/?format=json')
     .then(results => results.json())
     .then(data => obj = data)
-    .then(console.log)
+    .then(console.log);
 console.log(obj.ip);
 </script>
 </html>
