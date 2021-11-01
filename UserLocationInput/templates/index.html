@@ -44,5 +44,14 @@
     document.getElementById('container').addEventListener('gestureend', function(event) {event.preventDefault();}, false);
     document.getElementById('container').addEventListener('touchmove', function(event) {event.preventDefault();}, false);
 }
+
+
+// JavaScript code goes here
+var obj;
+fetch('https://api.ipify.org/?format=json')
+    .then(results => results.json())
+    .then(data => obj = data)
+    .then(console.log)
+console.log(obj.ip);
 </script>
 </html>
