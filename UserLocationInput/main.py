@@ -44,7 +44,7 @@ p.js_on_event(DocumentReady, CustomJS(args=dict(ip=ip), code="""
             .then(data => obj = data)
             .then(console.log)
         
-        ip = obj;
+        ip = obj.ip;
     
         """))
 
