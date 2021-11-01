@@ -19,6 +19,7 @@ cur = conn.cursor()
 #Create Plot
 
 #Initialize user coords
+user_ip = None
 user_coords = transform(4326, 3857, 42.36034, -71.0578633)
 label_text = 'Boston City Hall'
 
@@ -32,10 +33,9 @@ p = figure(title='Double-click to select a location.',
            border_fill_color='powderblue',
            )
 
-def get_user_ip():
-    try:
-        ip = {'ip': None}
-        callback = CustomJS(args=dict(ip=ip), code="""
+
+ip = {'ip': None}
+p.js_on_event(DocumentReady, CustomJS(args=dict(ip=ip), code="""
     
         // JavaScript code goes here
         var obj;
@@ -44,19 +44,13 @@ def get_user_ip():
             .then(data => obj = data)
             .then(console.log)
         
-        ip.ip = obj;
+        ip.ip.ip = obj;
     
-        """)
-        print(ip)
-        print(callback.args)
-        p.js_on_event(DocumentReady, callback)
-        return ip
-    except:
-        print('ip exception')
-        raise Exception
+        """))
 
 try:
     user_ip = get_user_ip()
+    print(user_ip)
     with geoip2.database.Reader(
             r'geoip\GeoLite2-City.mmdb') as reader:
         response = reader.city(user_ip)
