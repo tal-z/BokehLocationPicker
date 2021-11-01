@@ -33,9 +33,22 @@ p = figure(title='Double-click to select a location.',
            border_fill_color='powderblue',
            )
 
+def get_user_ip():
+    pass
 
-user_coords = transform(4326, 3857, 42.36034, -71.0578633)
-label_text = 'Boston City Hall'
+try:
+    user_ip = '73.119.96.183' #get_user_ip()
+    print(user_ip)
+    with geoip2.database.Reader(
+            r'geoip\GeoLite2-City.mmdb') as reader:
+        response = reader.city(user_ip)
+        user_coords = transform(4326, 3857, response.location.latitude, response.location.longitude)
+    label_text = 'You are here'
+
+
+except:
+    user_coords = transform(4326, 3857, 42.36034, -71.0578633)
+    label_text = 'Boston City Hall'
 
 
 p.toolbar.logo = None
