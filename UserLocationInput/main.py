@@ -43,12 +43,11 @@ p.js_on_event(DocumentReady, CustomJS(args=dict(ip=ip), code="""
             .then(results => results.json())
             .then(data => obj = data)
             .then(console.log)
-        
+        console.log(obj.ip);
         ip = obj.ip;
     
         """))
 
-print(ip)
 
 try:
     user_ip = get_user_ip()
