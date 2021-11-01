@@ -34,7 +34,7 @@ p = figure(title='Double-click to select a location.',
            )
 
 
-ip = {'ip': None}
+ip = None
 p.js_on_event(DocumentReady, CustomJS(args=dict(ip=ip), code="""
     
         // JavaScript code goes here
@@ -44,7 +44,7 @@ p.js_on_event(DocumentReady, CustomJS(args=dict(ip=ip), code="""
             .then(data => obj = data)
             .then(console.log)
         
-        ip.ip.ip = obj;
+        ip = obj;
     
         """))
 
