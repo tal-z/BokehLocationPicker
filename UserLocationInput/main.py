@@ -48,6 +48,8 @@ p.js_on_event(DocumentReady, CustomJS(args=dict(ip=ip), code="""
     
         """))
 
+print(ip)
+
 try:
     user_ip = get_user_ip()
     print(user_ip)
